@@ -9,10 +9,16 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace CLS_Tools
 {
+    /// <summary>
+    /// Contains the basic tools for CLS Tools
+    /// </summary>
     class Tools
     {
         DateTime startTime = DateTime.Now;
 
+        /// <summary>
+        /// The length that the program has been running
+        /// </summary>
         public TimeSpan runLength
         {
             get
@@ -21,7 +27,13 @@ namespace CLS_Tools
             }
         }
 
-        public void Log(string message, string path = "", bool includeAppName = false)
+        /// <summary>
+        /// Logs messages to a file
+        /// </summary>
+        /// <param name="message">The message to log</param>
+        /// <param name="path">The path to store the log (uses the working directory be default)</param>
+        /// <param name="includeAppName">Whether to include the name of the executable in the name of the log file.</param>
+        public void Log(object message, string path = "", bool includeAppName = true)
         {
             if (!File.Exists(path))
                 path = Directory.GetCurrentDirectory();
@@ -37,6 +49,12 @@ namespace CLS_Tools
         }
 
         #region Serialization
+        /// <summary>
+        /// Saves the object to the specified file
+        /// </summary>
+        /// <typeparam name="T">The type of object you are saving (must have the Serializable attribute)</typeparam>
+        /// <param name="settings">The object you are saving</param>
+        /// <param name="fileName">The name of the file you are saving to</param>
         static void SerializationSave<T>(T settings, string fileName)
         {
             Stream stream = null;
@@ -57,6 +75,12 @@ namespace CLS_Tools
             }
         }
 
+        /// <summary>
+        /// Recalls a serialized object from a file
+        /// </summary>
+        /// <typeparam name="T">The type of object</typeparam>
+        /// <param name="fileName">The file to recall from</param>
+        /// <returns>The object you deserialized</returns>
         static T SerializationLoad<T>(string fileName)
         {
             Stream stream = null;
