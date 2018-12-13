@@ -1,0 +1,5 @@
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\bin\Debug\CLS Tools.dll
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\bin\Debug\CLS Tools.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debug\CLS Tools.csprojResolveAssemblyReference.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debug\CLS Tools.dll
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debug\CLS Tools.pdb
