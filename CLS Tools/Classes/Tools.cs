@@ -12,12 +12,12 @@ namespace CLS_Tools
     /// </summary>
     public class BasicTools
     {
-        DateTime startTime = DateTime.Now;
+        static DateTime startTime = DateTime.Now;
 
         /// <summary>
         /// The length that the program has been running
         /// </summary>
-        public TimeSpan runLength
+        public static TimeSpan runLength
         {
             get
             {
@@ -31,19 +31,21 @@ namespace CLS_Tools
         /// <param name="message">The message to log</param>
         /// <param name="path">The path to store the log (uses the working directory be default)</param>
         /// <param name="includeAppName">Whether to include the name of the executable in the name of the log file.</param>
-        public void Log(object message, string path = "", bool includeAppName = true)
+        public static void Log(object message, string path = "", bool includeAppName = true)
         {
-            if (!File.Exists(path))
+            if (!Directory.Exists(path))
                 path = Directory.GetCurrentDirectory();
+            if (!path.EndsWith(@"\"))
+                path += @"\";
             if (includeAppName)
-                path += System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+                path += System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + "_";
             path += startTime.ToString("MM-dd-yyyy-HH-mm-ss");
             path += ".log.csv";
 
             StreamWriter logger = new StreamWriter(path);
             if (logger.BaseStream.Length == 0)
-                logger.WriteLine("TIMESTAMP,MESSAGE");
-            logger.WriteLine(runLength.TotalSeconds.ToString() + "," + message);
+                logger.WriteLine("Timestamp,Total App Run Length,Message");
+            logger.WriteLine(DateTime.Now + "," + runLength.TotalSeconds.ToString() + "," + message);
         }
     }
 }
