@@ -44,8 +44,25 @@ namespace CLS_Tools
 
             StreamWriter logger = new StreamWriter(path);
             if (logger.BaseStream.Length == 0)
-                logger.WriteLine("Timestamp,Total App Run Length,Message");
-            logger.WriteLine(DateTime.Now + "," + runLength.TotalSeconds.ToString() + "," + message);
+                logger.WriteLine("Timestamp,App Run Time,Message");
+            logger.WriteLine(DateTime.Now.ToString("ddd dd MMMM yyyy HH:mm:ss") + ", " + runLength.TotalSeconds.ToString() + " sec" + "," + message);
+            logger.Close();
         }
+
+        #region FixNull
+        public static int FixNull(int? input)
+        {
+            if (input != null)
+                return (int)input;
+            return 0;
+        }
+
+        public static string FixNull(string input)
+        {
+            if (input != null)
+                return input;
+            return "";
+        }
+        #endregion
     }
 }

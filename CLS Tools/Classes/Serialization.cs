@@ -49,7 +49,6 @@ namespace CLS_Tools
             {
                 IFormatter formatter = new BinaryFormatter();
                 stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
-                int version = (int)formatter.Deserialize(stream);
                 settings = (T)formatter.Deserialize(stream);
             }
             catch
