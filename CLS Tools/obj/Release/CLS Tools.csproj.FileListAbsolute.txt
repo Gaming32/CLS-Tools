@@ -2,3 +2,4 @@ C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\bin\Rele
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\bin\Release\CLS Tools.pdb
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Release\CLS Tools.dll
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Release\CLS Tools.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Release\CLS Tools.csprojResolveAssemblyReference.cache
