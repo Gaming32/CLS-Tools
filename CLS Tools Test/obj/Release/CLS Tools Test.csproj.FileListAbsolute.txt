@@ -1,1 +1,8 @@
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Release\CLS Tools Test.exe.config
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Release\CLS Tools Test.exe
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Release\CLS Tools Test.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Release\CLS Tools.dll
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Release\CLS Tools.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Release\CLS Tools Test.csprojResolveAssemblyReference.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Release\CLS Tools Test.exe
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Release\CLS Tools Test.pdb

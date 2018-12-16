@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.IO.Compression;
 
 namespace CLS_Tools
 {
@@ -15,13 +16,16 @@ namespace CLS_Tools
         /// <typeparam name="T">The type of object you are saving (must have the Serializable attribute)</typeparam>
         /// <param name="settings">The object you are saving</param>
         /// <param name="fileName">The name of the file you are saving to</param>
-        public static void Save<T>(T settings, string fileName)
+        /// <param name="keyName">The name of the key you are saving to</param>
+        public static void Save<T>(T settings, string fileName, string keyName)
         {
             Stream stream = null;
+            ZipArchive file = null;
             try
             {
+                file = ZipFile.Open(fileName, ZipArchiveMode.Update);
                 IFormatter formatter = new BinaryFormatter();
-                stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                stream = file.CreateEntry(keyName).Open();
                 formatter.Serialize(stream, settings);
             }
             catch
@@ -32,6 +36,7 @@ namespace CLS_Tools
             {
                 if (null != stream)
                     stream.Close();
+                file.Dispose();
             }
         }
 
@@ -40,15 +45,18 @@ namespace CLS_Tools
         /// </summary>
         /// <typeparam name="T">The type of object</typeparam>
         /// <param name="fileName">The file to recall from</param>
+        /// <param name="keyName">The key to recall from</param>
         /// <returns>The object you deserialized</returns>
-        public static T Load<T>(string fileName)
+        public static T Load<T>(string fileName, string keyName)
         {
             Stream stream = null;
             T settings = default(T);
+            ZipArchive file = null;
             try
             {
+                file = ZipFile.OpenRead(fileName);
                 IFormatter formatter = new BinaryFormatter();
-                stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                stream = file.GetEntry(keyName).Open();
                 settings = (T)formatter.Deserialize(stream);
             }
             catch
@@ -59,6 +67,7 @@ namespace CLS_Tools
             {
                 if (null != stream)
                     stream.Close();
+                file.Dispose();
             }
             return settings;
         }
