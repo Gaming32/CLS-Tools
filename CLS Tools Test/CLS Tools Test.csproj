@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="CLS Tools, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\CLS Tools\bin\Release\CLS Tools.dll</HintPath>
+      <HintPath>..\CLS Tools\bin\Debug\CLS Tools.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

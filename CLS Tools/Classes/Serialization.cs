@@ -25,6 +25,8 @@ namespace CLS_Tools
             {
                 file = ZipFile.Open(fileName, ZipArchiveMode.Update);
                 IFormatter formatter = new BinaryFormatter();
+                try { file.GetEntry(keyName).Delete(); }
+                catch { }
                 stream = file.CreateEntry(keyName).Open();
                 formatter.Serialize(stream, settings);
             }
