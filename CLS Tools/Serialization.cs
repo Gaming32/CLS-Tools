@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO.Compression;
 using System;
+using System.Collections.Generic;
 
 namespace CLSTools
 {
@@ -11,6 +12,9 @@ namespace CLSTools
     /// </summary>
     public class Serialization
     {
+        public string LogPath { get; set; } = "";
+        public bool LogIncludeAppName { get; set; } = true;
+
         #region Save
         /// <summary>
         /// Saves the object to the specified file
@@ -71,6 +75,7 @@ namespace CLSTools
             }
         }
         #endregion
+
         #region Load
         /// <summary>
         /// Recalls a serialized object from a file
@@ -130,6 +135,134 @@ namespace CLSTools
             }
             return settings;
         }
+
+        #region LoadAll
+        public static Dictionary<string, T> Load<T>(string fileName)
+        {
+            Stream stream = null;
+            Dictionary<string, T> settingsArr = new Dictionary<string, T>();
+            ZipArchive file = null;
+            try
+            {
+                file = ZipFile.OpenRead(fileName);
+                IFormatter formatter = new BinaryFormatter();
+                foreach(ZipArchiveEntry key in file.Entries)
+                {
+                    string keyName = key.FullName;
+                    stream = key.Open();
+                    object settings = formatter.Deserialize(stream);
+                    if (settings.GetType() == typeof(T))
+                        settingsArr.Add(keyName, (T)settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+            }
+            finally
+            {
+                if (null != stream)
+                    stream.Close();
+                if (null != file)
+                    file.Dispose();
+            }
+            return settingsArr;
+        }
+
+        public static Dictionary<string, T> Load<T>(Stream file)
+        {
+            Stream stream = null;
+            Dictionary<string, T> settingsArr = new Dictionary<string, T>();
+            ZipArchive fileToLoad = null;
+            try
+            {
+                fileToLoad = new ZipArchive(file);
+                IFormatter formatter = new BinaryFormatter();
+                foreach (ZipArchiveEntry key in fileToLoad.Entries)
+                {
+                    string keyName = key.FullName;
+                    stream = key.Open();
+                    object settings = formatter.Deserialize(stream);
+                    if (settings.GetType() == typeof(T))
+                        settingsArr.Add(keyName, (T)settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+            }
+            finally
+            {
+                if (null != stream)
+                    stream.Close();
+                if (null != file)
+                    file.Dispose();
+            }
+            return settingsArr;
+        }
+        #region All types
+        public static Dictionary<string, object> Load(string fileName)
+        {
+            Stream stream = null;
+            Dictionary<string, object> settingsArr = new Dictionary<string, object>();
+            ZipArchive file = null;
+            try
+            {
+                file = ZipFile.OpenRead(fileName);
+                IFormatter formatter = new BinaryFormatter();
+                foreach (ZipArchiveEntry key in file.Entries)
+                {
+                    string keyName = key.FullName;
+                    object settings = formatter.Deserialize(stream);
+                    settingsArr.Add(keyName, settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+            }
+            finally
+            {
+                if (null != stream)
+                    stream.Close();
+                if (null != file)
+                    file.Dispose();
+            }
+            return settingsArr;
+        }
+
+        public static Dictionary<string, object> Load(Stream file)
+        {
+            Stream stream = null;
+            Dictionary<string, object> settingsArr = new Dictionary<string, object>();
+            ZipArchive fileToLoad = null;
+            try
+            {
+                fileToLoad = new ZipArchive(file);
+                IFormatter formatter = new BinaryFormatter();
+                foreach (ZipArchiveEntry key in fileToLoad.Entries)
+                {
+                    string keyName = key.FullName;
+                    stream = key.Open();
+                    object settings = formatter.Deserialize(stream);
+                    settingsArr.Add(keyName, settings);
+                }
+            }
+            catch (Exception ex)
+            {
+                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+            }
+            finally
+            {
+                if (null != stream)
+                    stream.Close();
+                if (null != file)
+                    file.Dispose();
+            }
+            return settingsArr;
+        }
+        #endregion
+        #endregion
         #endregion
     }
 }
