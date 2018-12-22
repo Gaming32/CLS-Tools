@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CLS_Tools.Classes
+namespace CLSTools.CSInterpreter
 {
-    class Compression
+    class Property
     {
-        
+        Property() { }
     }
 }

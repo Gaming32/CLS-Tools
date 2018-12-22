@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace CLS_Tools
+namespace CLSTools
 {
     /// <summary>
     /// Contains the basic tools for CLS Tools
@@ -64,5 +64,22 @@ namespace CLS_Tools
             return "";
         }
         #endregion
+
+        /// <summary>
+        /// Splits a string into a string array where each substring is the specified length.
+        /// </summary>
+        /// <param name="str">The string to split</param>
+        /// <param name="substrLength">The length of each substring</param>
+        /// <returns>The split string</returns>
+        public static string[] StrSplit(string str, int substrLength)
+        {
+            var words = new List<string>();
+
+            for (int i = 0; i < str.Length; i += substrLength)
+                if (str.Length - i >= substrLength) words.Add(str.Substring(i, substrLength));
+                else words.Add(str.Substring(i, str.Length - i));
+
+            return words.ToArray();
+        }
     }
 }

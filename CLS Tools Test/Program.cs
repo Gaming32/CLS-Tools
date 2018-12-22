@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CLS_Tools;
+using CLSTools;
 using System.IO;
 
 namespace CLS_Tools_Test
@@ -33,6 +33,15 @@ namespace CLS_Tools_Test
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
+
+            //try
+            //{
+            //    Compression.Compress("test.txt", "test_OpenG32.txt", Compression.CompressionTypes.OpenG32);
+            //}
+            //catch (Exception)
+            //{
+            //    Console.WriteLine("Not yet existant.");
+            //}
         }
     }
 

@@ -2,14 +2,16 @@
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO.Compression;
+using System;
 
-namespace CLS_Tools
+namespace CLSTools
 {
     /// <summary>
     /// Class for saving and loading objects from files (similar to Python's shelve)
     /// </summary>
     public class Serialization
     {
+        #region Save
         /// <summary>
         /// Saves the object to the specified file
         /// </summary>
@@ -42,6 +44,32 @@ namespace CLS_Tools
             }
         }
 
+        public static void Save<T>(T settings, Stream file, string keyName)
+        {
+            Stream stream = null;
+            ZipArchive fileToSave = null;
+            try
+            {
+                fileToSave = new ZipArchive(file);
+                IFormatter formatter = new BinaryFormatter();
+                try { fileToSave.GetEntry(keyName).Delete(); }
+                catch { }
+                stream = fileToSave.CreateEntry(keyName).Open();
+                formatter.Serialize(stream, settings);
+            }
+            catch
+            {
+                // do nothing, just ignore any possible errors
+            }
+            finally
+            {
+                if (null != stream)
+                    stream.Close();
+                file.Dispose();
+            }
+        }
+        #endregion
+        #region Load
         /// <summary>
         /// Recalls a serialized object from a file
         /// </summary>
@@ -73,5 +101,31 @@ namespace CLS_Tools
             }
             return settings;
         }
+
+        public static T Load<T>(Stream file, string keyName)
+        {
+            Stream stream = null;
+            T settings = default(T);
+            ZipArchive fileToLoad = null;
+            try
+            {
+                fileToLoad = new ZipArchive(file);
+                IFormatter formatter = new BinaryFormatter();
+                stream = fileToLoad.GetEntry(keyName).Open();
+                settings = (T)formatter.Deserialize(stream);
+            }
+            catch
+            {
+                // do nothing, just ignore any possible errors
+            }
+            finally
+            {
+                if (null != stream)
+                    stream.Close();
+                file.Dispose();
+            }
+            return settings;
+        }
+        #endregion
     }
 }
