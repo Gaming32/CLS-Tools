@@ -12,12 +12,12 @@ namespace CLS_Tools_Test
     {
         static void Main(string[] args)
         {
-            try
-            {
+            //try
+            //{
                 Console.WriteLine(Serialization.Load<Person>(Directory.GetCurrentDirectory() + @"\People.db", "unknown"));
                 Console.WriteLine(Serialization.Load<Person>(Directory.GetCurrentDirectory() + @"\People.db", "Sarah Jones"));
-            }
-            catch (Exception) { }
+            //}
+            //catch (Exception) { }
 
             // Call the constructor that has no parameters.
             var person1 = new Person();

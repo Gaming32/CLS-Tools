@@ -32,15 +32,16 @@ namespace CLSTools
                 stream = file.CreateEntry(keyName).Open();
                 formatter.Serialize(stream, settings);
             }
-            catch
+            catch(Exception ex)
             {
-                // do nothing, just ignore any possible errors
+                BasicTools.Log($"Serialization Save Error: [Source={ex.Source};Message={ex.Message}]");
             }
             finally
             {
                 if (null != stream)
                     stream.Close();
-                file.Dispose();
+                if (null != file)
+                    file.Dispose();
             }
         }
 
@@ -57,15 +58,16 @@ namespace CLSTools
                 stream = fileToSave.CreateEntry(keyName).Open();
                 formatter.Serialize(stream, settings);
             }
-            catch
+            catch(Exception ex)
             {
-                // do nothing, just ignore any possible errors
+                BasicTools.Log($"Serialization Save Error: [Source=\"{ex.Source}\";Message=\"{ex.Message}\"]");
             }
             finally
             {
                 if (null != stream)
                     stream.Close();
-                file.Dispose();
+                if (null != file)
+                    file.Dispose();
             }
         }
         #endregion
@@ -89,14 +91,15 @@ namespace CLSTools
                 stream = file.GetEntry(keyName).Open();
                 settings = (T)formatter.Deserialize(stream);
             }
-            catch
+            catch(Exception ex)
             {
-                // do nothing, just ignore any possible errors
+                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
             }
             finally
             {
                 if (null != stream)
                     stream.Close();
+                if (null != file)
                 file.Dispose();
             }
             return settings;
@@ -114,15 +117,16 @@ namespace CLSTools
                 stream = fileToLoad.GetEntry(keyName).Open();
                 settings = (T)formatter.Deserialize(stream);
             }
-            catch
+            catch(Exception ex)
             {
-                // do nothing, just ignore any possible errors
+                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
             }
             finally
             {
                 if (null != stream)
                     stream.Close();
-                file.Dispose();
+                if (null != file)
+                    file.Dispose();
             }
             return settings;
         }

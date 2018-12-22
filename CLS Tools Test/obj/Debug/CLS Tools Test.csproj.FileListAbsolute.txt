@@ -3,6 +3,8 @@ C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Debug\CLS Tools Test.pdb
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Debug\CLS Tools.dll
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Debug\CLS Tools.pdb
-C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Debug\CLS Tools Test.csprojResolveAssemblyReference.cache
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Debug\CLS Tools Test.exe
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Debug\CLS Tools Test.pdb
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Debug\CLS Tools Test.csprojAssemblyReference.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Debug\CLS Tools Test.csproj.CoreCompileInputs.cache
+C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\obj\Debug\CLS Tools Test.csproj.CopyComplete

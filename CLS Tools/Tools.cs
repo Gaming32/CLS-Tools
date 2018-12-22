@@ -38,7 +38,10 @@ namespace CLSTools
             if (!path.EndsWith(@"\"))
                 path += @"\";
             if (includeAppName)
-                path += System.Reflection.Assembly.GetExecutingAssembly().GetName().Name + "_";
+                path += AppDomain.CurrentDomain.FriendlyName
+                    .TrimEnd(".exe".ToCharArray())
+                    .Replace(' ', '-')
+                    + "_";
             path += startTime.ToString("MM-dd-yyyy-HH-mm-ss");
             path += ".log.csv";
 
