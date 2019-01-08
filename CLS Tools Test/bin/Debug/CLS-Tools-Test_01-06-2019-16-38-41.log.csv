@@ -1,0 +1,2 @@
+Timestamp,App Run Time,Message
+Sun 06 January 2019 16:38:41, 0.0384258 sec,Serialization Load Error: [Source=mscorlib;Message=Could not find file 'C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools Test\bin\Debug\People.db'.]

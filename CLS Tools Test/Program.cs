@@ -16,6 +16,14 @@ namespace CLS_Tools_Test
             //{
                 Console.WriteLine(Serialization.Load<Person>(Directory.GetCurrentDirectory() + @"\People.db", "unknown"));
                 Console.WriteLine(Serialization.Load<Person>(Directory.GetCurrentDirectory() + @"\People.db", "Sarah Jones"));
+            try
+            {
+                Console.WriteLine(Serialization.Load<Person>(Directory.GetCurrentDirectory() + @"\People.db", "stupid"));
+            }
+            catch(Exception ex)
+            {
+                BasicTools.LogErr(ex);
+            }
             //}
             //catch (Exception) { }
 
@@ -31,9 +39,11 @@ namespace CLS_Tools_Test
             // Get the string representation of the person2 instance.
             Console.WriteLine(person2);
 
+            string[] tmp = BasicTools.StrSplit("11001001001101100101", 8);
+            Console.WriteLine($"[{tmp[0]}, {tmp[1]}, {tmp[2]}]");
+            //Console.WriteLine(BasicTools.StrSplit("11001001001101100101", 8));
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
-
             //try
             //{
             //    Compression.Compress("test.txt", "test_OpenG32.txt", Compression.CompressionTypes.OpenG32);

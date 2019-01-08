@@ -17,7 +17,7 @@ namespace CLSTools
         /// <summary>
         /// The length that the program has been running
         /// </summary>
-        public static TimeSpan runLength
+        public static TimeSpan RunLength
         {
             get
             {
@@ -31,7 +31,7 @@ namespace CLSTools
         /// <param name="message">The message to log</param>
         /// <param name="path">The path to store the log (uses the working directory be default)</param>
         /// <param name="includeAppName">Whether to include the name of the executable in the name of the log file.</param>
-        public static void Log(object message, string path = "", bool includeAppName = true)
+        public static DateTime LogCsv(object message, string path = "", bool includeAppName = true)
         {
             if (!Directory.Exists(path))
                 path = Directory.GetCurrentDirectory();
@@ -48,8 +48,33 @@ namespace CLSTools
             StreamWriter logger = new StreamWriter(path);
             if (logger.BaseStream.Length == 0)
                 logger.WriteLine("Timestamp,App Run Time,Message");
-            logger.WriteLine(DateTime.Now.ToString("ddd dd MMMM yyyy HH:mm:ss") + ", " + runLength.TotalSeconds.ToString() + " sec" + "," + message);
+            DateTime time = DateTime.Now;
+            logger.WriteLine(time.ToString("ddd dd MMMM yyyy HH:mm:ss") + ", " + RunLength.TotalSeconds.ToString() + " sec" + "," + message);
+            logger.Flush();
+
+            return time;
+        }
+
+        public static DateTime LogErr(Exception ex, string path = "", bool includeAppName = true)
+        {
+            if (!Directory.Exists(path))
+                path = Directory.GetCurrentDirectory();
+            if (!path.EndsWith(@"\"))
+                path += @"\";
+            if (includeAppName)
+                path += AppDomain.CurrentDomain.FriendlyName
+                    .TrimEnd(".exe".ToCharArray())
+                    .Replace(' ', '-')
+                    + "_";
+            DateTime time = DateTime.Now;
+            path += time.ToString("MM-dd-yyyy-HH-mm-ss");
+            path += ".err.log";
+
+            StreamWriter logger = new StreamWriter(path);
+            logger.Write(ex);
             logger.Close();
+
+            return time;
         }
 
         #region FixNull

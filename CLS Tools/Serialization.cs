@@ -12,8 +12,8 @@ namespace CLSTools
     /// </summary>
     public class Serialization
     {
-        public string LogPath { get; set; } = "";
-        public bool LogIncludeAppName { get; set; } = true;
+        public static string LogPath { get; set; } = "";
+        public static bool LogIncludeAppName { get; set; } = true;
 
         #region Save
         /// <summary>
@@ -38,7 +38,7 @@ namespace CLSTools
             }
             catch(Exception ex)
             {
-                BasicTools.Log($"Serialization Save Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -64,7 +64,7 @@ namespace CLSTools
             }
             catch(Exception ex)
             {
-                BasicTools.Log($"Serialization Save Error: [Source=\"{ex.Source}\";Message=\"{ex.Message}\"]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -98,7 +98,7 @@ namespace CLSTools
             }
             catch(Exception ex)
             {
-                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -124,7 +124,7 @@ namespace CLSTools
             }
             catch(Exception ex)
             {
-                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -157,7 +157,7 @@ namespace CLSTools
             }
             catch (Exception ex)
             {
-                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -189,7 +189,7 @@ namespace CLSTools
             }
             catch (Exception ex)
             {
-                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -219,7 +219,7 @@ namespace CLSTools
             }
             catch (Exception ex)
             {
-                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath, LogIncludeAppName);
             }
             finally
             {
@@ -250,7 +250,7 @@ namespace CLSTools
             }
             catch (Exception ex)
             {
-                BasicTools.Log($"Serialization Load Error: [Source={ex.Source};Message={ex.Message}]");
+                BasicTools.LogErr(ex, LogPath , LogIncludeAppName);
             }
             finally
             {
