@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLS Tools", "CLS Tools\CLS Tools.csproj", "{07407E55-B0D0-413E-8EB9-11A44B18548A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CLS Tools Test", "CLS Tools Test\CLS Tools Test.csproj", "{217A282E-F78A-4E76-823A-958FDFB8CBC2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,12 +15,11 @@ Global
 		{07407E55-B0D0-413E-8EB9-11A44B18548A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07407E55-B0D0-413E-8EB9-11A44B18548A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07407E55-B0D0-413E-8EB9-11A44B18548A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{217A282E-F78A-4E76-823A-958FDFB8CBC2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{217A282E-F78A-4E76-823A-958FDFB8CBC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{217A282E-F78A-4E76-823A-958FDFB8CBC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{217A282E-F78A-4E76-823A-958FDFB8CBC2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB2DF1B0-6860-433A-B89E-1FD2C04B1B27}
 	EndGlobalSection
 EndGlobal

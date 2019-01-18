@@ -1,0 +1,2 @@
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at CLSTools.Serialization.Load[T](String fileName, String keyName) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\Serialization.cs:line 96

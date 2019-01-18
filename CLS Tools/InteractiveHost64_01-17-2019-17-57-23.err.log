@@ -1,0 +1,5 @@
+System.ArgumentNullException: Parameter '' cannot be null.
+Parameter name: serializationStream
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream, HeaderHandler handler, Boolean fCheck, Boolean isCrossAppDomain, IMethodCallMessage methodCallMessage)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Deserialize(Stream serializationStream)
+   at CLSTools.Serialization.Load(String fileName)

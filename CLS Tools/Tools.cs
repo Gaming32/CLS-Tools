@@ -12,26 +12,24 @@ namespace CLSTools
     /// </summary>
     public class BasicTools
     {
-        static DateTime startTime = DateTime.Now;
+        /// <summary>
+        /// The time that the program started running
+        /// </summary>
+        public static DateTime StartTime { get; } = DateTime.Now;
 
         /// <summary>
-        /// The length that the program has been running
+        /// The time that the program has been running
         /// </summary>
-        public static TimeSpan RunLength
-        {
-            get
-            {
-                return DateTime.Now - startTime;
-            }
-        }
-
+        public static TimeSpan RunLength => DateTime.Now - StartTime;
+        
         /// <summary>
         /// Logs messages to a file
         /// </summary>
         /// <param name="message">The message to log</param>
         /// <param name="path">The path to store the log (uses the working directory be default)</param>
-        /// <param name="includeAppName">Whether to include the name of the executable in the name of the log file.</param>
-        public static DateTime LogCsv(object message, string path = "", bool includeAppName = true)
+        /// <param name="includeAppName">Whether to include the name of the executable in the name of the log file</param>
+        /// <returns>The time of the logging in a tuple (time of logging, time that the application has run)</returns>
+        public static Tuple<DateTime, TimeSpan> LogCsv(object message, string path = "", bool includeAppName = true)
         {
             if (!Directory.Exists(path))
                 path = Directory.GetCurrentDirectory();
@@ -42,19 +40,27 @@ namespace CLSTools
                     .TrimEnd(".exe".ToCharArray())
                     .Replace(' ', '-')
                     + "_";
-            path += startTime.ToString("MM-dd-yyyy-HH-mm-ss");
+            path += StartTime.ToString("MM-dd-yyyy-HH-mm-ss");
             path += ".log.csv";
 
             StreamWriter logger = new StreamWriter(path);
             if (logger.BaseStream.Length == 0)
                 logger.WriteLine("Timestamp,App Run Time,Message");
             DateTime time = DateTime.Now;
-            logger.WriteLine(time.ToString("ddd dd MMMM yyyy HH:mm:ss") + ", " + RunLength.TotalSeconds.ToString() + " sec" + "," + message);
+            TimeSpan length = RunLength;
+            logger.WriteLine(time.ToString("ddd dd MMMM yyyy HH:mm:ss") + ", " + length.TotalSeconds.ToString() + " sec" + "," + message);
             logger.Flush();
 
-            return time;
+            return new Tuple<DateTime, TimeSpan>(time, length);
         }
 
+        /// <summary>
+        /// Logs the specified exception to a file
+        /// </summary>
+        /// <param name="ex">The exception to log</param>
+        /// <param name="path">The place to directory to log to</param>
+        /// <param name="includeAppName">Whether to include the name of the program in the log file name</param>
+        /// <returns>The time that the exception was logged</returns>
         public static DateTime LogErr(Exception ex, string path = "", bool includeAppName = true)
         {
             if (!Directory.Exists(path))
@@ -76,25 +82,22 @@ namespace CLSTools
 
             return time;
         }
-
-        #region FixNull
-        public static int FixNull(int? input)
+        
+        /// <summary>
+        /// Takes in a null or non-null variable and returns a non-null variable
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="input">The null or non-null variable</param>
+        /// <returns>The non-null variable</returns>
+        public static T FixNull<T>(T input)
         {
-            if (input != null)
-                return (int)input;
-            return 0;
+            if (input == null)
+                return default(T);
+            return input;
         }
-
-        public static string FixNull(string input)
-        {
-            if (input != null)
-                return input;
-            return "";
-        }
-        #endregion
 
         /// <summary>
-        /// Splits a string into a string array where each substring is the specified length.
+        /// Splits a string into a string array where each substring is the specified length
         /// </summary>
         /// <param name="str">The string to split</param>
         /// <param name="substrLength">The length of each substring</param>
