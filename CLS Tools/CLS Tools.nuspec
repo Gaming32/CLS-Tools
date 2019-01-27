@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>CLSTools</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>-Added CLSTools.FormTools
+-Added XML summaries
+-Changed CLSTools.BasicTools.Log to CLSTools.BasicTools.LogCsv
+-Made CLSTools.BasicTools.StartTime public
+-Made the return value of CLSTools.BasicTools.LogCsv be a tuple of the time of the logging and the time into the program that the logging occurred
+-Made CLSTools.BasicTools.FixNull work on any data type or class</releaseNotes>
+    <copyright>Copyright 2019</copyright>
+	<!--<repository>
+		<url>https://github.com/gaming32/CLS-Tools</url>
+	</repository>-->
+  </metadata>
+  <files>
+	<file src="bin\Release\CLS Tools.pdb" target="lib\net452" />
+	<file src="bin\Release\CLS Tools.xml" target="lib\net452" />
+    <!--<file src="bin\Release\CLS Tools.dll" target="lib\CLSTools\CLSTools.dll" />
+	<file src="bin\Release\CLS Tools.pdb" target="lib\CLSTools\CLSTools.pdb" />
+	<file src="bin\Release\CLS Tools.xml" target="lib\CLSTools\CLSTools.xml" />-->
+  </files>
+</package>

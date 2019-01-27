@@ -10,7 +10,7 @@ namespace CLSTools
     /// <summary>
     /// Class for saving and loading objects from files (similar to Python's shelve)
     /// </summary>
-    public class Serialization
+    public static class Serialization
     {
         /// <summary>
         /// The path to log errors
@@ -25,7 +25,7 @@ namespace CLSTools
         /// <summary>
         /// Saves the object to the specified file
         /// </summary>
-        /// <typeparam name="T">The type of object you are saving (must have the Serializable attribute)</typeparam>
+        /// <typeparam name="T">The type of object you are saving</typeparam>
         /// <param name="settings">The object you are saving</param>
         /// <param name="fileName">The name of the file you are saving to</param>
         /// <param name="keyName">The name of the key you are saving to</param>
@@ -58,7 +58,7 @@ namespace CLSTools
         /// <summary>
         /// Saves the object to the specified file
         /// </summary>
-        /// <typeparam name="T">The type of object you are saving (must have the Serializable attribute)</typeparam>
+        /// <typeparam name="T">The type of object you are saving</typeparam>
         /// <param name="settings">The object you are saving</param>
         /// <param name="file">The stream you are saving to</param>
         /// <param name="keyName">The name of the key you are saving to</param>

@@ -1,0 +1,12 @@
+System.Runtime.Serialization.SerializationException: Type 'CLS_Tools_Test.Person' in Assembly 'CLS Tools Test, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' is not marked as serializable.
+   at System.Runtime.Serialization.FormatterServices.InternalGetSerializableMembers(RuntimeType type)
+   at System.Runtime.Serialization.FormatterServices.<>c__DisplayClass9_0.<GetSerializableMembers>b__0(MemberHolder _)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at System.Runtime.Serialization.FormatterServices.GetSerializableMembers(Type type, StreamingContext context)
+   at System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitMemberInfo()
+   at System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.InitSerialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+   at System.Runtime.Serialization.Formatters.Binary.WriteObjectInfo.Serialize(Object obj, ISurrogateSelector surrogateSelector, StreamingContext context, SerObjectInfoInit serObjectInfoInit, IFormatterConverter converter, ObjectWriter objectWriter, SerializationBinder binder)
+   at System.Runtime.Serialization.Formatters.Binary.ObjectWriter.Serialize(Object graph, Header[] inHeaders, __BinaryWriter serWriter, Boolean fCheck)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph, Header[] headers, Boolean fCheck)
+   at System.Runtime.Serialization.Formatters.Binary.BinaryFormatter.Serialize(Stream serializationStream, Object graph)
+   at CLSTools.Serialization.Save[T](T settings, String fileName, String keyName) in C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\Serialization.cs:line 43

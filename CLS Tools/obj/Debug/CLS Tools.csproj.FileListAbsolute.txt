@@ -4,4 +4,3 @@ C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debu
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debug\CLS Tools.pdb
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debug\CLS Tools.csprojAssemblyReference.cache
 C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\obj\Debug\CLS Tools.csproj.CoreCompileInputs.cache
-C:\Users\josia\MEGA\Projects\Visual Studio Projects\CLS Tools\CLS Tools\bin\Debug\CLS Tools.xml
